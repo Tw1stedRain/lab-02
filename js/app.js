@@ -26,9 +26,20 @@ Horn.prototype.render = function () {
   $entry.find('h2').text(this.title);
   $entry.find('img').attr('src', this.image_url);
   $entry.find('p').text(this.description);
+  $entry.find('h6').text(this.horns);
 
   $entry.removeClass('entry');
-  $entry.attr('class', this.name);
+  $entry.attr('class', this.keyword);
+};
+
+Horn.prototype.menu = function () {
+  $('select').append('<option class = "option"></option>');
+  let $option = $('option[class="option"]');
+
+  $option.attr('value', this.keyword);
+  $option.text(this.keyword);
+
+  $option.removeClass('option');
 };
 
 function readJson () {
@@ -41,9 +52,16 @@ function readJson () {
     .then( () => {
       allHorns.forEach( horn => {
         horn.render();
+        horn.menu();
       });
     });
 }
 
+$('select').on('change', function() {
+  let $selection = $(this).val();
+  $('div').hide();
+  $(`div[class = "${$selection}"]`).show();
+});
+
 $(() => readJson());
-// readJson();
+

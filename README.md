@@ -11,10 +11,12 @@ Diff: -17 minutes
 
 Feature #2: Filter Images
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 60 min
 
-Start time:
+Start time: 6:53 pm
 Finish time:
 
 Actual time needed to complete:
 Diff: 
+
+note: added 15 min due to commit issues
