@@ -29,7 +29,7 @@ Horn.prototype.render = function () {
   $entry.find('h6').text(this.horns);
 
   $entry.removeClass('entry');
-  $entry.attr('class', this.name);
+  $entry.attr('class', this.keyword);
 };
 
 Horn.prototype.menu = function () {
@@ -40,7 +40,7 @@ Horn.prototype.menu = function () {
   $option.text(this.keyword);
 
   $option.removeClass('option');
-}
+};
 
 function readJson () {
   $.get('data/page-1.json', 'json')
@@ -57,5 +57,11 @@ function readJson () {
     });
 }
 
+$('select').on('change', function() {
+  let $selection = $(this).val();
+  $('div').hide();
+  $(`div[class = "${$selection}"]`).show();
+});
+
 $(() => readJson());
-// readJson();
+
