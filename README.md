@@ -51,12 +51,12 @@ ___________________________________
 **Actual time needed to complete**: 36 minutes
 **Diff**: +6 minutes
 
-# Feature #2: 
+# Feature #2: Templating
 
-**Estimate of time needed to complete**: 
+**Estimate of time needed to complete**: 45 minutes
 
-**Start time**: 
-**Finish time**: 
+**Start time**: 2:36PM
+**Finish time**: 3:02PM
 
-**Actual time needed to complete**: 
-**Diff**: 
+**Actual time needed to complete**: 26 minutes
+**Diff**: -19 minutes
