@@ -4,11 +4,11 @@ function Horn(obj) {
   this.description = obj.description;
   this.keyword = obj.keyword;
   this.horns = obj.horns;
-
-  allHorns.push(this);
 }
 
-const allHorns = [];
+const horns1 = [];
+const horns2 = [];
+let uniqueHorns = [];
 
 Horn.prototype.render = function () {
   // creating new div and appending to main
@@ -33,34 +33,67 @@ Horn.prototype.render = function () {
 };
 
 Horn.prototype.menu = function () {
-  $('select').append('<option class = "option"></option>');
-  let $option = $('option[class="option"]');
+  if(uniqueHorns.indexOf(this.keyword) === -1){
+    $('select').append('<option class = "option"></option>');
+    let $option = $('option[class="option"]');
 
-  $option.attr('value', this.keyword);
-  $option.text(this.keyword);
+    $option.attr('value', this.keyword);
+    $option.text(this.keyword);
 
-  $option.removeClass('option');
+    $option.removeClass('option');
+
+    uniqueHorns.push(this.keyword);
+  }
 };
 
 function readJson () {
   $.get('data/page-1.json', 'json')
     .then( data => {
       data.forEach( hornObj => {
-        new Horn(hornObj);
+        horns1.push(new Horn(hornObj));
       });
-    })
-    .then( () => {
-      allHorns.forEach( horn => {
-        horn.render();
-        horn.menu();
+    });
+  $.get('data/page-2.json', 'json')
+    .then( data => {
+      data.forEach( hornObj => {
+        horns2.push(new Horn(hornObj));
       });
     });
 }
 
+$('button').on('click', function() {
+  let choice = $(this).attr('value');
+  if(choice === 'horns1'){
+    pageRender(horns1);
+  } else {
+    pageRender(horns2);
+  }
+});
+
+function pageRender (array) {
+  $('main').empty();
+  $('select').empty().html('<option value="default">-- Select --</option>');
+  uniqueHorns = [];
+  array.forEach( horn => {
+    horn.render();
+    horn.menu();
+  });
+}
+
+
+
+
 $('select').on('change', function() {
-  let $selection = $(this).val();
-  $('div').hide();
-  $(`div[class = "${$selection}"]`).show();
+  let selection = $(this).val();
+
+  if (selection === 'default'){
+    $('div').show();
+    return;
+  } else {
+    $('div').hide();
+    $(`div[class = "${selection}"]`).show();
+  }
+
 });
 
 $(() => readJson());
