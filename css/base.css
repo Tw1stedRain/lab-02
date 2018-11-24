@@ -1,0 +1,28 @@
+
+@import url(reset.css);
+
+/* BASE */
+* {
+    box-sizing: border-box;
+}
+html {
+    background-color: rgb(196, 196, 177);
+    height: 100%;
+}
+
+body {
+    background: fixed;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    padding-left: 25px;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
