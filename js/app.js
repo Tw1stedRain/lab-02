@@ -1,5 +1,5 @@
 function Horn(obj) {
-  this.image_url = obj.image_url;
+  this.image_url = `<img src="${obj.image_url}"`;
   this.title = obj.title;
   this.description = obj.description;
   this.keyword = obj.keyword;
@@ -10,27 +10,6 @@ const horns1 = [];
 const horns2 = [];
 let uniqueHorns = [];
 
-Horn.prototype.render = function () {
-  // creating new div and appending to main
-  $('main').append('<div class="entry"></div>');
-  // give new div a new js variable name so we can work with it
-  let $entry = $('div[class="entry"]');
-
-  // copy the tags from the html template
-  let hornTemplate = $('#photo-template').html();
-
-  // place the template tags into our new entry
-  $entry.html(hornTemplate);
-
-  // give our div content from the obj
-  $entry.find('h2').text(this.title);
-  $entry.find('img').attr('src', this.image_url);
-  $entry.find('p').text(this.description);
-  $entry.find('h6').text(this.horns);
-
-  $entry.removeClass('entry');
-  $entry.attr('class', this.keyword);
-};
 
 Horn.prototype.menu = function () {
   if(uniqueHorns.indexOf(this.keyword) === -1){
@@ -45,6 +24,14 @@ Horn.prototype.menu = function () {
     uniqueHorns.push(this.keyword);
   }
 };
+
+Horn.prototype.toHtml = function () {
+  let templateHtml = $('#horns-template').html();
+  let hornTemplate = Handlebars.compile(templateHtml);
+  let newHorn = hornTemplate(this);
+  return newHorn;
+
+}
 
 function readJson () {
   $.get('data/page-1.json', 'json')
@@ -75,13 +62,10 @@ function pageRender (array) {
   $('select').empty().html('<option value="default">-- Select --</option>');
   uniqueHorns = [];
   array.forEach( horn => {
-    horn.render();
+    $('main').append(horn.toHtml());
     horn.menu();
   });
 }
-
-
-
 
 $('select').on('change', function() {
   let selection = $(this).val();
