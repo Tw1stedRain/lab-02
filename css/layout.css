@@ -1,0 +1,28 @@
+/* LAYOUT */
+div {
+    /* float: left; */
+    width: 250px;
+    height: 430px;
+    border: 1px solid black;
+    border-radius: 30px;
+    text-align: center;
+    background-color: rgb(235, 235, 211);
+}
+
+footer {
+    clear: left;
+    text-align: center;
+    padding-top: 30px;
+}
+
+
+
+option {
+    font-size: 18px;
+}
+
+img {
+    width: 200px;
+    display: block;
+    margin: 25px;
+}

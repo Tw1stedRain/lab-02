@@ -10,6 +10,7 @@ ____________________________
 **Finish time**: 6:38PM
 
 **Actual time needed to complete**: 43 minutes
+
 **Diff**: -17 minutes
 
 
@@ -21,6 +22,7 @@ ____________________________
 **Finish time**: 7:44PM 
 
 **Actual time needed to complete**: 51 minutes
+
 **Diff**: -9 minutes
 
 ***note***: added 15 min due to commit issues
@@ -34,6 +36,7 @@ ____________________________
 **Finish time**: 8:35PM
 
 **Actual time needed to complete**: 42 minutes
+
 **Diff**: +12 minutes
 
 ___________________________________
@@ -49,6 +52,7 @@ ___________________________________
 **Finish time**: 2:28PM
 
 **Actual time needed to complete**: 36 minutes
+
 **Diff**: +6 minutes
 
 # Feature #2: Templating
@@ -59,4 +63,16 @@ ___________________________________
 **Finish time**: 3:02PM
 
 **Actual time needed to complete**: 26 minutes
+
 **Diff**: -19 minutes
+
+# Feature #3:Styling with Flex Box
+
+**Estimate of time needed to complete**: 60 minutes
+
+**Start time**: 3:13PM
+**Finish time**: 3:43PM
+
+**Actual time needed to complete**: 30 minutes
+
+**Diff**: -30 minutes
