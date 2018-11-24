@@ -9,6 +9,7 @@ function Horn(obj) {
 }
 
 const allHorns = [];
+const uniqueHorns = [];
 
 Horn.prototype.render = function () {
   // creating new div and appending to main
@@ -33,13 +34,17 @@ Horn.prototype.render = function () {
 };
 
 Horn.prototype.menu = function () {
-  $('select').append('<option class = "option"></option>');
-  let $option = $('option[class="option"]');
+  if(uniqueHorns.indexOf(this.keyword) === -1){
+    $('select').append('<option class = "option"></option>');
+    let $option = $('option[class="option"]');
+  
+    $option.attr('value', this.keyword);
+    $option.text(this.keyword);
+  
+    $option.removeClass('option');
 
-  $option.attr('value', this.keyword);
-  $option.text(this.keyword);
-
-  $option.removeClass('option');
+    uniqueHorns.push(this.keyword);
+  }
 };
 
 function readJson () {
@@ -58,9 +63,16 @@ function readJson () {
 }
 
 $('select').on('change', function() {
-  let $selection = $(this).val();
-  $('div').hide();
-  $(`div[class = "${$selection}"]`).show();
+  let selection = $(this).val();
+
+  if (selection === 'default'){
+    $('div').show();
+    return;
+  } else {
+    $('div').hide();
+    $(`div[class = "${selection}"]`).show();
+  }
+
 });
 
 $(() => readJson());
