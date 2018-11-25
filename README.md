@@ -76,3 +76,16 @@ ___________________________________
 **Actual time needed to complete**: 30 minutes
 
 **Diff**: -30 minutes
+
+# Feature #4: Sort the Images
+
+**Estimate of time needed to complete**: 45 minutes
+
+**Start time**: 3:50pm
+**Break Start**: 4:03PM
+**Break End**: 4:27PM
+**Finish time**: 
+
+**Actual time needed to complete**: 
+
+**Diff**: 
