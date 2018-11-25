@@ -9,11 +9,12 @@ function Horn(obj) {
 const horns1 = [];
 const horns2 = [];
 let uniqueHorns = [];
+let hornNum = [];
 
 
 Horn.prototype.menu = function () {
   if(uniqueHorns.indexOf(this.keyword) === -1){
-    $('select').append('<option class = "option"></option>');
+    $('#keyword').append('<option class = "option"></option>');
     let $option = $('option[class="option"]');
 
     $option.attr('value', this.keyword);
@@ -22,6 +23,18 @@ Horn.prototype.menu = function () {
     $option.removeClass('option');
 
     uniqueHorns.push(this.keyword);
+  }
+  if(hornNum.indexOf(this.horns) === -1){
+    $('#horns').append('<option class = "horn"></option>');
+    let $horns = $('option[class="horn"]');
+
+    $horns.attr('value', this.horns);
+    $horns.text(this.horns);
+
+    $horns.removeClass();
+    
+    hornNum.push(this.horns);
+
   }
 };
 
@@ -59,15 +72,18 @@ $('button').on('click', function() {
 
 function pageRender (array) {
   $('main').empty();
-  $('select').empty().html('<option value="default">-- Select --</option>');
+  $('#keyword').empty().html('<option value="default">-- Keyword --</option>');
+  $('#horns').empty().html('<option value="default">-- Horns --</option>');
+  $('#title').empty().html('<option value="default">-- Title --</option>');
   uniqueHorns = [];
+  hornNum = [];
   array.forEach( horn => {
     $('main').append(horn.toHtml());
     horn.menu();
   });
 }
 
-$('select').on('change', function() {
+$('#keyword').on('change', function() {
   let selection = $(this).val();
 
   if (selection === 'default'){
@@ -76,6 +92,19 @@ $('select').on('change', function() {
   } else {
     $('div').hide();
     $(`div[class = "${selection}"]`).show();
+  }
+
+});
+
+$('#horns').on('change', function() {
+  let selection2 = $(this).val();
+
+  if (selection2 === 'default'){
+    $('div').show();
+    return;
+  } else {
+    $('div').hide();
+    $(`div[class = "${selection2}"]`).show();
   }
 
 });
