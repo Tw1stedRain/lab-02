@@ -15,8 +15,14 @@
       <button type="button" id="horns1">Horns 1</button>
       <button type="button" id="horns2">Horns 2</button>
 
-      <select>
-        <option value="default">-- Select --</option>
+      <select id = "keyword">
+        <option value="default">-- Keyword --</option>
+      </select>
+      <select id="horns" >
+        <option value="default">-- Horns --</option>
+      </select>
+      <select id="title" >
+        <option value="default">-- Title --</option>
       </select>
 
       <button type="button" id="alpha">Sort Alphabetically</button>
@@ -24,7 +30,9 @@
     </header>
 
   <script type="text/x-handlebars-template" id="horns-template">
+
     <div id="photo-template" class="{{this.keyword}}">
+
       <h2>{{ title }}</h2>
       {{{ image_url }}}
       <p>{{ description }}</p>
