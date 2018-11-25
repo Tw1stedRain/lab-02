@@ -101,13 +101,39 @@ $('#alpha').on('click', function() {
       return 0;
     });
     pageRender(horns1);
-    console.log("1");
   } else {
     horns2.sort(function(a, b) {
       if( a.title > b.title){
         return 1
       }
       if( a.title < b.title){
+        return -1
+      }
+      return 0;
+    });
+    pageRender(horns2);
+  }
+});
+
+$('#numeric').on('click', function() {
+  $('div').hide();
+  if (page === 1) {
+    horns1.sort(function(a, b) {
+      if( a.horns > b.horns){
+        return 1
+      }
+      if( a.horns < b.horns){
+        return -1
+      }
+      return 0;
+    });
+    pageRender(horns1);
+  } else {
+    horns2.sort(function(a, b) {
+      if( a.horns > b.horns){
+        return 1
+      }
+      if( a.horns < b.horns){
         return -1
       }
       return 0;
