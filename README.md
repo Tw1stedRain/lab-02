@@ -84,8 +84,10 @@ ___________________________________
 **Start time**: 3:50pm
 **Break Start**: 4:03PM
 **Break End**: 4:27PM
-**Finish time**: 
+**Finish time**:6:10PM
 
-**Actual time needed to complete**: 
+**Actual time needed to complete**: 116 minutes
 
-**Diff**: 
+**Diff**: +71 minutes
+
+***note***: We noticed about an hour or so into working on this feature that we misinterpreted the functionality of the sort feature.

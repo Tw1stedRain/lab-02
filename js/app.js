@@ -11,11 +11,6 @@ const horns2 = [];
 let page;
 let uniqueHorns = [];
 
-const alphabetHorns = [];
-const numbericHorns = [];
-
-
-
 Horn.prototype.menu = function () {
   if(uniqueHorns.indexOf(this.keyword) === -1){
     $('#keyword').append('<option class = "option"></option>');
@@ -28,18 +23,6 @@ Horn.prototype.menu = function () {
 
     uniqueHorns.push(this.keyword);
   }
-  if(hornNum.indexOf(this.horns) === -1){
-    $('#horns').append('<option class = "horn"></option>');
-    let $horns = $('option[class="horn"]');
-
-    $horns.attr('value', this.horns);
-    $horns.text(this.horns);
-
-    $horns.removeClass();
-    
-    hornNum.push(this.horns);
-
-  }
 };
 
 Horn.prototype.toHtml = function () {
@@ -47,11 +30,6 @@ Horn.prototype.toHtml = function () {
   let hornTemplate = Handlebars.compile(templateHtml);
   let newHorn = hornTemplate(this);
   return newHorn;
-
-}
-
-function alphaSort (a, b) {
-  return a.title.toLowerCase() > b.title.toLowerCase();
 }
 
 function readJson () {
@@ -82,10 +60,7 @@ $('#horns2').on('click', function () {
 function pageRender (array) {
   $('main').empty();
   $('#keyword').empty().html('<option value="default">-- Keyword --</option>');
-  $('#horns').empty().html('<option value="default">-- Horns --</option>');
-  $('#title').empty().html('<option value="default">-- Title --</option>');
   uniqueHorns = [];
-  hornNum = [];
   array.forEach( horn => {
     $('main').append(horn.toHtml());
     horn.menu();
@@ -118,7 +93,6 @@ $('#alpha').on('click', function() {
       return 0;
     });
     pageRender(horns1);
-    console.log("1");
   } else {
     horns2.sort(function(a, b) {
       if( a.title > b.title){
@@ -132,6 +106,33 @@ $('#alpha').on('click', function() {
     pageRender(horns2);
   }
 
+});
+
+$('#numeric').on('click', function() {
+  $('div').hide();
+  if (page === 1) {
+    horns1.sort(function(a, b) {
+      if( a.horns > b.horns){
+        return 1
+      }
+      if( a.horns < b.horns){
+        return -1
+      }
+      return 0;
+    });
+    pageRender(horns1);
+  } else {
+    horns2.sort(function(a, b) {
+      if( a.horns > b.horns){
+        return 1
+      }
+      if( a.horns < b.horns){
+        return -1
+      }
+      return 0;
+    });
+    pageRender(horns2);
+  }
 });
 
 $(() => readJson());
