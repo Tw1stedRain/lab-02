@@ -8,8 +8,12 @@ function Horn(obj) {
 
 const horns1 = [];
 const horns2 = [];
+let page;
 let uniqueHorns = [];
-let hornNum = [];
+
+const alphabetHorns = [];
+const numbericHorns = [];
+
 
 
 Horn.prototype.menu = function () {
@@ -46,6 +50,10 @@ Horn.prototype.toHtml = function () {
 
 }
 
+function alphaSort (a, b) {
+  return a.title.toLowerCase() > b.title.toLowerCase();
+}
+
 function readJson () {
   $.get('data/page-1.json', 'json')
     .then( data => {
@@ -61,13 +69,14 @@ function readJson () {
     });
 }
 
-$('button').on('click', function() {
-  let choice = $(this).attr('value');
-  if(choice === 'horns1'){
-    pageRender(horns1);
-  } else {
-    pageRender(horns2);
-  }
+$('#horns1').on('click', function() {
+  pageRender(horns1);
+  page = 1;
+});
+
+$('#horns2').on('click', function () {
+  pageRender(horns2);
+  page = 2;
 });
 
 function pageRender (array) {
@@ -96,15 +105,31 @@ $('#keyword').on('change', function() {
 
 });
 
-$('#horns').on('change', function() {
-  let selection2 = $(this).val();
-
-  if (selection2 === 'default'){
-    $('div').show();
-    return;
+$('#alpha').on('click', function() {
+  $('div').hide();
+  if (page === 1) {
+    horns1.sort(function(a, b) {
+      if( a.title > b.title){
+        return 1
+      }
+      if( a.title < b.title){
+        return -1
+      }
+      return 0;
+    });
+    pageRender(horns1);
+    console.log("1");
   } else {
-    $('div').hide();
-    $(`div[class = "${selection2}"]`).show();
+    horns2.sort(function(a, b) {
+      if( a.title > b.title){
+        return 1
+      }
+      if( a.title < b.title){
+        return -1
+      }
+      return 0;
+    });
+    pageRender(horns2);
   }
 
 });

@@ -12,8 +12,8 @@
   <body>
     <header>
       <h1>The Gallery of Horns</h1>
-      <button type="button" value="horns1">Horns 1</button>
-      <button type="button" value="horns2">Horns 2</button>
+      <button type="button" id="horns1">Horns 1</button>
+      <button type="button" id="horns2">Horns 2</button>
 
       <select id = "keyword">
         <option value="default">-- Keyword --</option>
@@ -24,10 +24,15 @@
       <select id="title" >
         <option value="default">-- Title --</option>
       </select>
+
+      <button type="button" id="alpha">Sort Alphabetically</button>
+      <button type="button" id="numeric">Sort by Number of Horns</button>
     </header>
 
   <script type="text/x-handlebars-template" id="horns-template">
-    <div id="photo-template" class="{{this.keyword}} {{this.horns}}" >
+
+    <div id="photo-template" class="{{this.keyword}}">
+
       <h2>{{ title }}</h2>
       {{{ image_url }}}
       <p>{{ description }}</p>
